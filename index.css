@@ -1,0 +1,97 @@
+
+body {
+    margin: 0;
+    padding: 10px;
+    padding-top: 70px;
+    font-family: "VT323";
+    min-width: 400px;
+    background-color: #c0c0c0;
+    font-size: 15px;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5em;
+    background-color: #0827f5;
+    color: #fff
+}
+
+input {
+    font-family: "VT323";
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    margin-bottom: 4px;
+    margin-top: 10px;
+}
+
+button {
+    font-family: "VT323";
+    color: white;
+    padding: 5px 10px;
+    font-size: 15px;
+    color: #000;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #858585;
+    border-bottom: 2px solid #858585;
+}
+
+button:active{
+    content: '';
+    box-sizing: border-box;
+    display: block;
+    background: transparent;
+    z-index: 9;
+    top: 0;
+    left: 0;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.button-container button{
+    margin-right: 10px;
+}
+/* Style the button according to the provided design */
+
+ul {
+    margin-top: 10px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.ulborder{
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border: 2px groove;
+}
+
+/* #ul-el to make the popup not overflow, making it scrollable to save more space */
+#ul-el{
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+li {
+    margin-top: 5px;
+}
+
+a {
+    color: #000;
+}
+
+
+
+.timestamp{
+    mix-blend-mode: difference;
+    color: #ff8600;
+}
