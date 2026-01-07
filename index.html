@@ -7,27 +7,37 @@
     </head>
 
     <header>
-        <nav>
-            <ul>
-                <li>
-                    TabSaver
-                </li>
-            </ul>
-        </nav>
+        <div class="header-title">TabSaver</div>
     </header>
 
     <body>
         <div class="button-container">
-        <button id="input-btn">SAVE INPUT</button>
-        <button id="tab-btn">SAVE TAB</button>
-        <button id="delete-btn">DELETE ALL</button>
-        <button id="sort-btn">SORT A-Z</button>
-        <button id="Zsort-btn">SORT Z-A</button>
-        <button id="time-btn">SORT BY TIME ASC</button>
-        <button id="timerev-btn">SORT BY TIME DESC</button>
+            <div class="filter-wrapper">
+                <button id="filter-btn">FILTERS</button>
+                <div id="filter-menu" class="win95-menu">
+                    <div class="menu-items">
+                        <button id="sort-btn" class="menu-item">A-Z</button>
+                        <button id="Zsort-btn" class="menu-item">Z-A</button>
+                        <div class="menu-divider"></div>
+                        <button id="time-btn" class="menu-item">TIME ASC</button>
+                        <button id="timerev-btn" class="menu-item">TIME DESC</button>
+                    </div>
+                </div>
+            </div>
+            <button id="tab-btn">SAVE TAB</button>
+            <button id="delete-btn">DELETE ALL</button>
         </div>
-        <input type="text" id="input-el">
+        <!-- New Layout for Input and Button -->
+        <div class="input-container">
+            <input type="text" id="input-el" placeholder="Enter link here...">
+            <button id="input-btn">SAVE INPUT</button>
+        </div>
         <ul class="ulborder" id="ul-el"></ul>
+        <footer class="status-bar">
+            <div class="status-field" id="status-el">0 item(s) saved</div>
+            <div class="status-field" style="width: 60px;">buh</div> <!-- Decorative -->
+            <div class="resizer"></div>
+        </footer>
         <script src="index.js"></script>
     </body>
 </html>

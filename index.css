@@ -1,67 +1,181 @@
+* {
+    box-sizing: border-box; /* Crucial for alignment */
+}
 
 body {
     margin: 0;
     padding: 10px;
-    padding-top: 70px;
+    padding-top: 40px;
     font-family: "VT323";
-    min-width: 400px;
+    width: 400px;
+    height: 400px; /* I increased this slightly to give you more room, change back to 300px if preferred */
     background-color: #c0c0c0;
     font-size: 15px;
+    display: flex;         /* Added */
+    flex-direction: column; /* Added */
+    box-sizing: border-box; /* Added to keep padding inside the 400px */
 }
 
-header{
+header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0.5em;
+    height: 30px;          /* Set a fixed height */
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
     background-color: #0827f5;
-    color: #fff
+    color: #fff;
+    z-index: 100;
+}
+
+.header-title {
+    font-size: 16px;
 }
 
 input {
     font-family: "VT323";
-    width: 100%;
+    flex-grow: 1;       /* This makes the input take up all available space */
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #000;
-    margin-bottom: 4px;
-    margin-top: 10px;
+    border: 1px solid #858585;
+    /* Remove margin-top and margin-bottom from here as they are now on the container */
+    margin: 0; 
 }
+
+.input-container {
+    display: flex;
+    gap: 5px;            /* Space between input and button */
+    margin-top: 10px;
+    margin-bottom: 4px;
+    align-items: stretch; /* Makes them the same height */
+}
+
+#input-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 
 button {
     font-family: "VT323";
-    color: white;
     padding: 5px 10px;
     font-size: 15px;
     color: #000;
+    background-color: #c0c0c0; /* Standard Win95 gray */
     border-top: 2px solid white;
     border-left: 2px solid white;
     border-right: 2px solid #858585;
     border-bottom: 2px solid #858585;
+    cursor: pointer;
 }
 
-button:active{
-    content: '';
-    box-sizing: border-box;
-    display: block;
-    background: transparent;
-    z-index: 9;
-    top: 0;
-    left: 0;
+button:active {
+    /* Remove display: block, top, and left */
+    border-top: 2px solid #858585;
+    border-left: 2px solid #858585;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    outline: none;
+    transform: translateY(1px); /* Optional: moves it down 1px to look pressed */
 }
 
-.button-container{
-    display: flex;
-    justify-content: space-between;
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
     padding: 5px;
-    border-bottom: 1px solid #ccc;
+    position: relative; /* So the menu can position itself */
 }
 
-.button-container button{
-    margin-right: 10px;
+.filter-wrapper {
+    position: relative;
 }
-/* Style the button according to the provided design */
+
+.win95-menu {
+    display: none; /* Hidden until clicked */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #858585;
+    border-bottom: 2px solid #858585;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    z-index: 1000;
+    flex-direction: row;
+    min-width: 150px;
+}
+
+.menu-sidebar {
+    background: linear-gradient(to bottom, #000080, #1084d0);
+    width: 25px;
+    display: flex;
+    align-items: flex-end;
+    padding: 5px;
+}
+
+.sidebar-text {
+    transform: rotate(-90deg);
+    color: #fff;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 14px;
+    transform-origin: left top;
+    margin-bottom: 30px;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2px;
+}
+
+/* Individual items in the menu */
+.menu-item {
+    background: none !important;
+    border: none !important;
+    text-align: left !important;
+    width: 100% !important;
+    padding: 5px 15px !important;
+    font-family: "VT323" !important;
+    cursor: pointer;
+    color: #000;
+}
+
+/* The Blue Highlight on hover (like the Start Menu) */
+.menu-item:hover {
+    background-color: #000080 !important;
+    color: #fff !important;
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: #858585;
+    border-bottom: 1px solid #fff;
+    margin: 5px 2px;
+}
+
+/* Show class for JS */
+.show {
+    display: flex !important;
+}
+
+.button-container button {
+    width: 100%;          /* Makes button fill the grid cell */
+    height: 100%;         /* Makes all buttons the same height */
+    margin: 0;            /* Remove old margins */
+    padding: 5px 2px;
+    font-size: 13px;      /* Slightly smaller to ensure text fits */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
 ul {
     margin-top: 10px;
@@ -69,29 +183,170 @@ ul {
     padding-left: 0;
 }
 
-.ulborder{
-    padding-left: 5px;
-    padding-bottom: 5px;
-    border: 2px groove;
+.ulborder {
+    padding: 2px;          /* Minimal padding to show the white background right up to the edge */
+    border: 2px groove;    /* This creates the "sunken" effect */
+    background-color: #fff; /* This makes the background white */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    overflow: hidden;
 }
 
 /* #ul-el to make the popup not overflow, making it scrollable to save more space */
-#ul-el{
-    max-height: 100px;
+#ul-el {
+    background-color: #fff; /* Match the container */
+    width: 100%;
+    flex-grow: 1;
     overflow-y: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 0;
+    padding: 5px 5px 5px 5px; /* Adjust the second '5px' if you want more/less space on the left */
+    list-style: none;         /* This ensures no bullets push the text */
+    list-style-position: inside; 
 }
 
 li {
-    margin-top: 5px;
+    margin: 0;
+    padding: 4px 0;           /* Vertical spacing between items */
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
 }
 
+/* Ensure links are a classic blue */
 a {
-    color: #000;
+    color: #0000EE; 
+    text-decoration: underline;
+}
+
+.timestamp {
+    color: #000000;      /* Pure black */
+    font-size: 12px;     /* Optional: slightly smaller than the link */
+    margin-left: 8px;    /* Space between the link and the time */
+    mix-blend-mode: normal; /* Remove the difference blending */
 }
 
 
+/* Scrollbar */
+/* 1. Define the width and background of the scrollbar area */
+::-webkit-scrollbar {
+    width: 16px;  /* Traditional Win95 thickness */
+    height: 16px; /* For horizontal scrollbars */
+    background-color: #c0c0c0;
+}
 
-.timestamp{
-    mix-blend-mode: difference;
-    color: #ff8600;
+/* 2. The Track: The area the thumb slides on */
+/* In Win95, this often had a "dithered" (checkered) light grey pattern */
+::-webkit-scrollbar-track {
+    background-image: linear-gradient(45deg, #dfdfdf 25%, transparent 25%), 
+                      linear-gradient(-45deg, #dfdfdf 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #dfdfdf 75%), 
+                      linear-gradient(-45deg, transparent 75%, #dfdfdf 75%);
+    background-size: 2px 2px;
+    background-color: #ffffff;
+    box-shadow: inset 1px 1px 0px #808080; /* Sunken look */
+}
+
+/* 3. The Thumb: The part you click and drag */
+::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    /* Create the 3D raised button effect */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #c0c0c0;
+    /* Reverse borders when clicked */
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* 4. The Buttons: The arrows at the top and bottom */
+/* 1. Base button style */
+::-webkit-scrollbar-button {
+    background-color: #c0c0c0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 7px;
+}
+
+/* 2. Hide the "extra" buttons so you only have one at each end */
+::-webkit-scrollbar-button:start:increment,
+::-webkit-scrollbar-button:end:decrement {
+    display: none;
+}
+
+/* 3. The Top Arrow (Vertical Start) */
+::-webkit-scrollbar-button:vertical:start:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 2l-4 6h8z' fill='black'/%3E%3C/svg%3E");
+}
+
+/* 4. The Bottom Arrow (Vertical End) */
+::-webkit-scrollbar-button:vertical:end:increment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 8l4-6H1z' fill='black'/%3E%3C/svg%3E");
+}
+
+/* 5. The Left Arrow (Horizontal Start) */
+::-webkit-scrollbar-button:horizontal:start:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 5l6-4v8z' fill='black'/%3E%3C/svg%3E");
+}
+
+/* 6. The Right Arrow (Horizontal End) */
+::-webkit-scrollbar-button:horizontal:end:increment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M8 5L2 1v8z' fill='black'/%3E%3C/svg%3E");
+}
+
+/* 7. Clicked Effect */
+::-webkit-scrollbar-button:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+.status-bar {
+    display: flex;
+    gap: 2px;
+    background-color: #c0c0c0;
+    padding: 2px;
+    margin-top: 5px;
+    border-top: 1px solid #858585; /* Thin line to separate from list */
+    flex-shrink: 0;
+}
+
+.status-field {
+    background-color: #c0c0c0;
+    padding: 2px 5px;
+    font-size: 13px;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    flex-grow: 1; /* Makes the main text area take up space */
+}
+
+/* The diagonal lines in the bottom right corner */
+.resizer {
+    width: 14px;
+    height: 14px;
+    background-image: linear-gradient(-45deg, 
+        transparent 25%, #808080 25%, #808080 30%, transparent 30%, 
+        transparent 45%, #808080 45%, #808080 50%, transparent 50%,
+        transparent 65%, #808080 65%, #808080 70%, transparent 70%);
+    align-self: flex-end;
 }
